@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="monospace"
+        android:text="Crear Trampa"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="26sp"
+        android:typeface="normal" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Codigo del sector"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/input_codSector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="text"
+        android:hint="Ej: TR-S001" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Tipo de Trampa"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/input_TipoTrampa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="text"
+        android:hint="Ej: Cromatica Pegajoza" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Nivel de Captura"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/input_NivelCapt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="numberSigned"
+        android:hint="(Del 1 al 5)" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="Observaciones"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/input_Observaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="text"
+        android:hint="Escriba aqui ..." />
+
+    <Button
+        android:id="@+id/btn_crear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Crear" />
+
+    <ListView
+        android:id="@+id/lista_trampas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

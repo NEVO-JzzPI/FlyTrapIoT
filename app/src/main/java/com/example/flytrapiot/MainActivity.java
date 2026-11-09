@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         btn_crear = findViewById(R.id.btn_crear);
 
-
-        cargarTrampas();
-
         btn_crear.setOnClickListener(v -> {
             if(NivelCaptura()){
                 crearTrampas();
@@ -62,22 +59,30 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-/*        lista_trampas.setOnItemClickListener( new AdapterView.OnItemClickListener()
+        lista_trampas.setOnItemClickListener( new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int posicion, long id){
-                //al hacer click en un elemento de la lista, buscamos ese elmento en la lista de id y lo enviamos a detalle activity
+
 
                 Integer id_actual = lista_id.get(posicion);
 
-                Intent intent_detalle = new Intent(MainActivity.this, DetalleActivity.class);
+                Intent intent_detalle = new Intent(MainActivity.this, DetailActivity.class);
                 intent_detalle.putExtra("id_actual", id_actual);
                 startActivity(intent_detalle);
             }
         });
 
- */
+
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // se ejecuta cada vez que la pantalla vuelve a verse, asi la lista siempre esta actualizada
+        cargarTrampas();
+    }
+
     public boolean NivelCaptura(){
         String texto = input_NivelCapt.getText().toString().trim();
 
@@ -108,15 +113,15 @@ public class MainActivity extends AppCompatActivity {
         datos_trampas = new ArrayList<>();
         lista_id = new ArrayList<Integer>();
 
-        //CONSULTAR DATOS A LA BASE DE DATOS
+
         Cursor fila = db.rawQuery("SELECT * FROM trampas", null);
 
-        //validar que tenga por lo menos un dato
+
         if (fila.moveToFirst())
         {
-            //tiene como minimo un dato
+
             do {
-                //obtener los datos de la fila
+
                 int id_actual = fila.getInt(0);
                 String codigo_sector = fila.getString(1);
                 String tipo_trampa = fila.getString(2);
@@ -132,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            //si no retorna nada de la base de datos
+
             datos_trampas.add("No existen contactos en la base de datos");
         }
 
@@ -148,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         String observacion_actual = String.valueOf(input_Observaciones.getText());
 
         if (codigo_actual.isEmpty() == false & tipo_actual.isEmpty() == false & nivel_actual.isEmpty() == false & observacion_actual.isEmpty() == false) {
-            //si nombre tiene valor y telefono tiene valor entonces agregamos
+
             DBHelper admin = new DBHelper(this);
             SQLiteDatabase db = admin.getWritableDatabase();
 
@@ -160,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
             long resultado = db.insert("trampas", null, nuevo_dato);
 
-            //reiniciar los inputs
+
             input_codSector.setText("");
             input_TipoTrampa.setText("");
             input_NivelCapt.setText("");
